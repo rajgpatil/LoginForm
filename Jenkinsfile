@@ -21,12 +21,13 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                echo "Deploying..."
-                // Simulate deploy: adjust this line if you're copying to a real server
-                sh 'cp index.html /path/to/deployment/folder/'
-            }
+        steps {
+            echo "Deploying..."
+            sh 'mkdir -p deploy && cp index.html deploy/'
+            archiveArtifacts artifacts: 'deploy/index.html', fingerprint: true
         }
+}
+
     }
 
     post {
