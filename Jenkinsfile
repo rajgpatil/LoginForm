@@ -4,26 +4,27 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/rajgpatil/LoginForm.git'
+                git branch: 'main', url: 'https://github.com/rajgpatil/LoginForm.git'
             }
         }
 
         stage('Build') {
             steps {
-                echo "Build stage - no actual build for static HTML"
+                echo "Build stage - nothing to build for static HTML"
             }
         }
 
         stage('Test') {
             steps {
-                echo "Testing HTML (optional for static site)"
+                echo "Test stage - you can add HTML validators here"
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deploying to web server (simulated)"
-                sh 'cp index.html /var/www/html/'  // Adjust as needed
+                echo "Deploying..."
+                // Simulate deploy: adjust this line if you're copying to a real server
+                sh 'cp index.html /path/to/deployment/folder/'
             }
         }
     }
